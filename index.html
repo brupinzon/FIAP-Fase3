@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sítio do Arvoredo - Gestão FIAP Fase 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandOrange: '#ff751f',
+                        brandGreen: '#558b24',
+                        brandBg: '#ffffff',
+                        brandCardBg: '#efefef'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#efefef] p-4 md:p-8 font-sans text-slate-900">
+
+    <header class="mb-8 bg-white p-6 rounded-2xl shadow-sm border-b-4 border-brandGreen flex flex-col md:flex-row justify-between items-center">
+        <div>
+            <h1 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Visualização Analítica: <span class="text-brandGreen">Sítio do Arvoredo</span></h1>
+            <p class="text-slate-500 font-medium tracking-tight">Fase 3: IA para Negócios - Gestão Estratégica e Liderança</p>
+        </div>
+        <div class="mt-4 md:mt-0 bg-brandGreen/10 px-4 py-2 rounded-lg text-sm font-bold text-brandGreen italic">
+            Data Storytelling: Desempenho e Eficiência
+        </div>
+    </header>
+
+    <div class="mb-4 flex items-center">
+        <div class="w-2 h-6 bg-brandGreen mr-2 rounded-full"></div>
+        <h2 class="text-lg font-bold text-slate-700 uppercase">Visão Financeira</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Receita Bruta (Março)</p>
+            <h3 class="text-3xl font-black text-brandGreen tracking-tighter">R$ 101.282</h3>
+            <span class="text-[10px] text-brandGreen/70 font-bold uppercase">Volume Vendido</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Custo Total da Operação</p>
+            <h3 class="text-3xl font-black text-brandOrange tracking-tighter">R$ 66.513</h3>
+            <span class="text-[10px] text-brandOrange/70 font-bold uppercase">Inclui Perdas de PDV</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Lucro Bruto</p>
+            <h3 class="text-3xl font-black text-slate-800 tracking-tighter">R$ 34.769</h3>
+            <span class="text-[10px] text-slate-400 font-bold uppercase">Margem de 34,3%</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Margem Líquida Méd.</p>
+            <h3 class="text-3xl font-black text-slate-800 tracking-tighter">R$ 23,76 <span class="text-sm font-normal text-slate-500">/kg</span></h3>
+            <span class="text-[10px] text-slate-400 font-bold uppercase">Retorno Final</span>
+        </div>
+    </div>
+
+    <div class="mb-4 flex items-center">
+        <div class="w-2 h-6 bg-brandOrange mr-2 rounded-full"></div>
+        <h2 class="text-lg font-bold text-slate-700 uppercase">Operação Lote</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Volume Total do Lote</p>
+            <h3 class="text-3xl font-black text-slate-800 tracking-tighter">454 <span class="text-sm font-normal text-slate-500">kg</span></h3>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Tempo Total de Colheita</p>
+            <h3 class="text-3xl font-black text-brandOrange tracking-tighter">93 <span class="text-sm font-normal text-slate-500">Dias</span></h3>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Classe de Produto</p>
+            <h3 class="text-3xl font-black text-brandGreen tracking-tighter">Classe A</h3>
+            <span class="text-[10px] text-brandGreen/70 font-bold uppercase">Padrão Exportação</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-1">Eficiência Sell-out</p>
+            <h3 class="text-3xl font-black text-brandGreen tracking-tighter">92.3%</h3>
+            <span class="text-[10px] text-brandGreen/70 font-bold uppercase">Giro de Gôndola</span>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+            <h3 class="text-md font-bold text-slate-700 mb-6 border-l-4 border-brandGreen pl-3 uppercase text-sm tracking-wider">Desempenho Financeiro por PDV</h3>
+            <div class="flex-grow flex items-center justify-center p-2">
+                <canvas id="chartFinanceiro" height="220"></canvas>
+            </div>
+            <p class="mt-4 text-[11px] text-slate-400 italic text-center">Comparativo de Receita Bruta vs Custo de Mercadoria Exposta.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+            <h3 class="text-md font-bold text-slate-700 mb-6 border-l-4 border-slate-400 pl-3 uppercase text-sm tracking-wider">Varejo PDV: Fluxo de Bandejas</h3>
+            <div class="flex-grow flex items-center justify-center p-2">
+                <canvas id="chartFunilPDV" height="220"></canvas>
+            </div>
+            <p class="mt-4 text-[11px] text-slate-400 italic text-center">Cruzamento de Bandejas Expostas, Vendidas e Perdidas por PDV.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+            <h3 class="text-md font-bold text-slate-700 mb-6 border-l-4 border-brandOrange pl-3 uppercase text-sm tracking-wider">Mix: Variedade & Sistema de Cultivo</h3>
+            <div class="flex-grow flex items-center justify-center p-4">
+                <canvas id="chartMix" style="max-height: 250px;"></canvas>
+            </div>
+            <p class="mt-4 text-[11px] text-slate-400 italic text-center">Distribuição baseada no volume colhido (kg).</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+            <h3 class="text-md font-bold text-slate-700 mb-6 border-l-4 border-brandOrange pl-3 uppercase text-sm tracking-wider">Motivos de Devolução & Perda</h3>
+            <div class="flex-grow flex items-center justify-center p-2">
+                <canvas id="chartPerdas" style="max-height: 250px;"></canvas>
+            </div>
+            <p class="mt-4 text-[11px] text-slate-400 italic text-center">Análise de perdas controláveis mapeadas na operação B2B.</p>
+        </div>
+
+    </div>
+
+    <footer class="mt-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-widest pb-10">
+        2026 | Análise criada para a Fase 03 da Pós-Tech FIAP.
+    </footer>
+
+    <script>
+        Chart.defaults.font.family = 'Inter, sans-serif';
+        Chart.defaults.color = '#94a3b8';
+
+        // Cores da Paleta
+        const corVerde = '#558b24';
+        const corLaranja = '#ff751f';
+        const corCinza = '#cbd5e1';
+
+        // 1. Chart Financeiro
+        new Chart(document.getElementById('chartFinanceiro'), {
+            type: 'bar',
+            data: {
+                labels: ['PDV01', 'PDV02 (Premium)', 'PDV03'],
+                datasets: [
+                    { label: 'Receita Bruta (R$)', data: [34270, 35170, 31842], backgroundColor: corVerde },
+                    { label: 'Custo da Operação (R$)', data: [22502, 22207, 21802], backgroundColor: corLaranja }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } }
+        });
+
+        // 2. Funil de PDV
+        new Chart(document.getElementById('chartFunilPDV'), {
+            type: 'bar',
+            data: {
+                labels: ['PDV01', 'PDV02', 'PDV03'],
+                datasets: [
+                    { label: 'Expostas', data: [613, 605, 594], backgroundColor: corCinza },
+                    { label: 'Vendidas', data: [575, 553, 549], backgroundColor: corVerde },
+                    { label: 'Perdidas', data: [28, 39, 29], backgroundColor: corLaranja }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } }
+        });
+
+        // 3. Mix Chart (Adicionado e Colorido conforme Paleta)
+        new Chart(document.getElementById('chartMix'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Albion (Substrato)', 'San Andreas (Semi-hidro)'],
+                datasets: [{
+                    data: [239, 215],
+                    backgroundColor: [corLaranja, corVerde],
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 4
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } 
+            }
+        });
+
+        // 4. Perdas
+        new Chart(document.getElementById('chartPerdas'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Logística', 'Manuseio', 'Validade'],
+                datasets: [{
+                    data: [62, 23, 15],
+                    backgroundColor: [corLaranja, corVerde, corCinza],
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 4
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } 
+            }
+        });
+    </script>
+</body>
+</html>
